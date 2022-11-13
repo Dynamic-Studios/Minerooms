@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "minerooms:blocks/level0_wallpaper_block"
+  }
+}

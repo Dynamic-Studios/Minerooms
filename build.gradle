@@ -4,10 +4,10 @@ plugins {
 
 
 group = 'dynamicstudios'
-version = '1.0'
+version = '1.19.2-0.0.1.0'
 
 java {
-    archivesBaseName = 'minerooms'
+    archivesBaseName = 'MineRooms'
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 

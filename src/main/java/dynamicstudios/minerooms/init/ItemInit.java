@@ -15,5 +15,6 @@ public class ItemInit {
 
     // Every block has to have its BLOCKITEM equivalent
     public static final RegistryObject<BlockItem> LEVEL0_CARPET_BLOCK_ITEM = ITEMS.register("level0_carpet_block", () -> new BlockItem(BlockInit.LEVEL0_CARPET_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final RegistryObject<BlockItem> LEVEL0_WALLPAPER_BLOCK_ITEM = ITEMS.register("level0_wallpaper_block", () -> new BlockItem(BlockInit.LEVEL0_WALLPAPER_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
 
 }

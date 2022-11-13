@@ -17,4 +17,6 @@ public class BlockInit {
     // The only part that changes is the Properties.of block which simply describes the blocks properties, so if a block has properties of a Material.STONE it'll have the same properties as a Stone block
     // you can also modify these properties using methods like .strength()
     public static final RegistryObject<Block> LEVEL0_CARPET_BLOCK = BLOCKS.register("level0_carpet_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(-1.0f)));
+    public static final RegistryObject<Block> LEVEL0_WALLPAPER_BLOCK = BLOCKS.register("level0_wallpaper_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(-1.0f)));
+
 }
