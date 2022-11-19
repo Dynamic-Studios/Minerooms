@@ -5,7 +5,13 @@ import dynamicstudios.minerooms.init.BlockInit;
 import dynamicstudios.minerooms.init.ItemInit;
 import dynamicstudios.minerooms.proceduralg.Level0ProceduralG;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
@@ -57,6 +63,7 @@ public class Minerooms {
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
@@ -72,6 +79,11 @@ public class Minerooms {
             Level0ProceduralG.generate(player);
         }
     }
+    @SubscribeEvent
+    public void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+        event.getEntity().teleportTo(event.getEntity().getX(), 226, event.getEntity().getZ());
+    }
+
 
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
