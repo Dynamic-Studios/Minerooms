@@ -3,6 +3,7 @@ package dynamicstudios.minerooms;
 import com.mojang.logging.LogUtils;
 import dynamicstudios.minerooms.init.BlockInit;
 import dynamicstudios.minerooms.init.ItemInit;
+import dynamicstudios.minerooms.obj.Survivor;
 import dynamicstudios.minerooms.proceduralg.Level0ProceduralG;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -27,6 +28,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
+import java.util.ArrayList;
+
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Minerooms.MODID)
 public class Minerooms {
@@ -36,6 +39,7 @@ public class Minerooms {
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
+    private ArrayList<Survivor> survivors = new ArrayList<Survivor>();
 
     public Minerooms() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -69,15 +73,21 @@ public class Minerooms {
     }
     @SubscribeEvent
     public void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
+        Survivor joined = new Survivor(event.getEntity());
+
+        joined.setLevel(0, new Level0ProceduralG(joined));
+        survivors.add(joined);
+
+
         Vec3 playerPos = event.getEntity().position();
         event.getEntity().teleportTo(playerPos.x(),226,playerPos.z());
     }
 
     public void serverTick(TickEvent.ServerTickEvent event) {
-
-        for (Player player : event.getServer().getPlayerList().getPlayers()) {
-            Level0ProceduralG.generate(player);
+        for (Survivor survivor: survivors) {
+            survivor.getPG().generate();
         }
+
     }
     @SubscribeEvent
     public void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
