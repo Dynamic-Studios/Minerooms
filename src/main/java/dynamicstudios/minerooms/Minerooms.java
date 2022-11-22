@@ -6,13 +6,6 @@ import dynamicstudios.minerooms.init.ItemInit;
 import dynamicstudios.minerooms.obj.Survivor;
 import dynamicstudios.minerooms.proceduralg.Level0ProceduralG;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
@@ -80,7 +73,7 @@ public class Minerooms {
 
 
         Vec3 playerPos = event.getEntity().position();
-        event.getEntity().teleportTo(playerPos.x(),226,playerPos.z());
+        event.getEntity().teleportTo(playerPos.x(),230,playerPos.z());
     }
 
     public void serverTick(TickEvent.ServerTickEvent event) {
