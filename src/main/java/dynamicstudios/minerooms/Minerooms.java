@@ -39,7 +39,6 @@ public class Minerooms {
 
         MinecraftForge.EVENT_BUS.addListener(this::serverTick);
 
-
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
